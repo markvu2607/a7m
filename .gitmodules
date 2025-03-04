@@ -1,0 +1,6 @@
+[submodule "a7m-api"]
+	path = a7m-api
+	url = git@github.com:markvu2607/a7m-api.git
+[submodule "a7m-web"]
+	path = a7m-web
+	url = git@github.com:markvu2607/a7m-web.git
