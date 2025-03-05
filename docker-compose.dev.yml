@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres
+    container_name: a7m-db
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=12345678
+      - POSTGRES_DB=a7m_db
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data/postgres_data:/var/lib/postgresql/data
+
+  pocketbase:
+    image: ghcr.io/muchobien/pocketbase:latest
+    container_name: a7m-pocketbase
+    restart: always
+    ports:
+      - 8090:8090
+    volumes:
+      - ./data/pb_data:/pb_data
+
+networks:
+  default:
+    name: a7m-network
+    driver: bridge
