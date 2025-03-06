@@ -12,15 +12,6 @@ services:
     volumes:
       - ./data/postgres_data:/var/lib/postgresql/data
 
-  pocketbase:
-    image: ghcr.io/muchobien/pocketbase:latest
-    container_name: a7m-pocketbase
-    restart: always
-    ports:
-      - 8090:8090
-    volumes:
-      - ./data/pb_data:/pb_data
-
 networks:
   default:
     name: a7m-network
