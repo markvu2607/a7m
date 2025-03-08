@@ -12,6 +12,13 @@ services:
     volumes:
       - ./data/postgres_data:/var/lib/postgresql/data
 
+  mailhog:
+    image: mailhog/mailhog
+    container_name: a7m-mailhog
+    ports:
+      - 1025:1025 # SMTP server port
+      - 8025:8025 # Web UI port
+
 networks:
   default:
     name: a7m-network
