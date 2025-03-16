@@ -29,6 +29,27 @@ services:
       - 1025:1025 # SMTP server port
       - 8025:8025 # Web UI port
 
+  # judge0:
+  #   image: judge0/judge0:latest
+  #   container_name: a7m-judge0
+  #   restart: always
+  #   depends_on:
+  #     - db
+  #     - redis
+  #   ports:
+  #     - 2358:2358
+  #   environment:
+  #     - JUDGE0_HOST=judge0
+  #     - REDIS_HOST=redis
+  #     - POSTGRES_HOST=db
+  #     - POSTGRES_PORT=5432
+  #     - POSTGRES_DB=a7m_db
+  #     - POSTGRES_USER=root
+  #     - POSTGRES_PASSWORD=12345678
+  #     - REDIS_PORT=6379
+  #     - JUDGE0_PRODUCTION=false
+  #     - JUDGE0_WORKERS=2
+
 networks:
   default:
     name: a7m-network
