@@ -22,46 +22,46 @@ services:
       - ./data/redis_data:/data
     command: redis-server --appendonly yes
 
-  mailhog:
-    image: mailhog/mailhog
-    container_name: a7m-mailhog
-    ports:
-      - 1025:1025 # SMTP server port
-      - 8025:8025 # Web UI port
+  # mailhog:
+  #   image: mailhog/mailhog
+  #   container_name: a7m-mailhog
+  #   ports:
+  #     - 1025:1025 # SMTP server port
+  #     - 8025:8025 # Web UI port
 
-  judge0:
-    image: judge0/judge0:latest
-    container_name: a7m-judge0
-    restart: always
-    depends_on:
-      - db
-      - redis
-    ports:
-      - 2358:2358
-    environment:
-      - JUDGE0_HOST=judge0
-      - JUDGE0_PRODUCTION=false
-      - JUDGE0_WORKERS=2
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-      - POSTGRES_HOST=judge0-db
-      - POSTGRES_PORT=5432
-      - POSTGRES_DB=judge0_db
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=12345678
+  # judge0:
+  #   image: judge0/judge0:latest
+  #   container_name: a7m-judge0
+  #   restart: always
+  #   depends_on:
+  #     - db
+  #     - redis
+  #   ports:
+  #     - 2358:2358
+  #   environment:
+  #     - JUDGE0_HOST=judge0
+  #     - JUDGE0_PRODUCTION=false
+  #     - JUDGE0_WORKERS=2
+  #     - REDIS_HOST=redis
+  #     - REDIS_PORT=6379
+  #     - POSTGRES_HOST=judge0-db
+  #     - POSTGRES_PORT=5432
+  #     - POSTGRES_DB=judge0_db
+  #     - POSTGRES_USER=root
+  #     - POSTGRES_PASSWORD=12345678
 
-  judge0-db:
-    image: postgres
-    container_name: a7m-judge0-db
-    restart: always
-    environment:
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=12345678
-      - POSTGRES_DB=judge0_db
-    ports:
-      - 5433:5432
-    volumes:
-      - ./data/judge0_db_data:/var/lib/postgresql/data
+  # judge0-db:
+  #   image: postgres
+  #   container_name: a7m-judge0-db
+  #   restart: always
+  #   environment:
+  #     - POSTGRES_USER=root
+  #     - POSTGRES_PASSWORD=12345678
+  #     - POSTGRES_DB=judge0_db
+  #   ports:
+  #     - 5433:5432
+  #   volumes:
+  #     - ./data/judge0_db_data:/var/lib/postgresql/data
 
 networks:
   default:
